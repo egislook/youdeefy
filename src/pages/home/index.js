@@ -10,8 +10,6 @@ import { fustyle, cssReload } from 'next-fucss/utils'
 
 export default withSiteData((props) => {
   
-  cssReload();
-  
   const global = useContext(GlobalContext);
   const suggestionsCallback = useRef();
   

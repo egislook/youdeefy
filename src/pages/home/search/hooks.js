@@ -2,7 +2,9 @@
 import { fetchPlaylists, fetchTrack, importPlaylist } from './collectors';
 import { useEffect, useState } from 'react';
 
-export const useSearch = ({ handleInfo, handleLoading }, handleFetchPlaylists) => {
+export const useSearch = (global = {}, handleFetchPlaylists) => {
+  
+  const { handleInfo, handleLoading } = global;
   
   const [ search, setSearch ] = useState();
   const [ isValidSearch, setIsValidSearch ] = useState();

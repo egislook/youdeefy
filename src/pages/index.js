@@ -4,7 +4,6 @@ import { fustyle, cssReload } from 'next-fucss/utils'
 import { withSiteData } from 'react-static'
 
 export default withSiteData((props) => {
-  cssReload();
   return (
     <div className="p:20px" style={{ textAlign: 'center' }}>
       <Title size={300}>Welcome to React-Statics</Title>

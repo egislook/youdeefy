@@ -11,7 +11,7 @@ export default (props) => {
   
   return (
     <div className="p-rl:3pc">
-      <h1 className="fs:160pc m-t:5px lh:1.1 mxw:200px">{title.map(text => (
+      <h1 className="fs:160pc m-t:5px lh:1.1 mxw:200px">{title && title.map(text => (
         <div key={text}>{text}</div>
       ))}</h1>
       <h2 className="fs:95pc m-tb:20px c:56585C">{description}</h2>

@@ -2,7 +2,7 @@
 import { fetchPlaylist, fetchTrack } from '../../libs/fetchers';
 import { useEffect, useState } from 'react';
 
-export const usePlaylist = (global, playlistId) => {
+export const usePlaylist = (global = {}, playlistId) => {
   const { handleLoading, handleInfo } = global
   const [ playlist, setPlaylist ] = useState();
   
