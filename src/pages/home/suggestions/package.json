@@ -1,0 +1,5 @@
+{
+  "name": "suggestions",
+  "private": true,
+  "main": "./suggestions.js"
+}

@@ -1,33 +1,34 @@
-import { Link } from '@reach/router'
-import React from 'react';
-import { fucss } from 'next-fucss/utils';
+import React, { useContext, Fragment, useRef, useEffect, useState } from 'react'
+import { fucss } from 'next-fucss/utils'
 
-import ElemSearch from './search';
-import ElemFog from '../../elements/fog';
+import Search from './search'
+import Suggestions from './suggestions'
+import Elements from 'youdeefy/elements'
+import GlobalContext from 'youdeefy/contexts'
+import { withSiteData } from 'react-static'
+import { fustyle, cssReload } from 'next-fucss/utils'
 
-import { useGlobal } from './hooks';
-
-const image = '/icons/512.png';
-
-export default (props) => {
+export default withSiteData((props) => {
   
-  console.log(props);
+  cssReload();
   
-  const global = useGlobal();
-  const { isLoading, errorMessage, handleInfo } = global;
+  const global = useContext(GlobalContext);
+  const suggestionsCallback = useRef();
+  
+  const [ callbacks, setCallbacks ] = useState({ handleFetchPlaylists: console.log })
+
+  useEffect(() => {
+    setCallbacks(suggestionsCallback.current);
+  }, [suggestionsCallback])
   
   return (
-    <section className="prim:8D34D5 dp:flx ai:c mnh:100vh jc:c c:F9FBFD mxw:100pc of:hd bg:1A1D22">
+    <Fragment>
       
-      { (isLoading || errorMessage) && <ElemFog 
-        image={image}
-        onClose={handleInfo} 
-        message={!isLoading && errorMessage} /> }
-      
-      <ElemSearch
-        global={global}
-        image={image} />
+      <div className="p-tb:30px mxw:700px w:100pc">
+        <Search {...props} global={global} handleFetchPlaylists={callbacks.handleFetchPlaylists} />
+        <Suggestions callback={suggestionsCallback} global={global} />
+      </div>
         
-    </section>
+    </Fragment>
   )
-}
+})

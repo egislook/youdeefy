@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { fustyle, cssReload } from 'next-fucss/utils'
+import { withSiteData } from 'react-static'
 
-export default () => {
+export default withSiteData((props) => {
   cssReload();
   return (
     <div className="p:20px" style={{ textAlign: 'center' }}>
@@ -11,7 +12,7 @@ export default () => {
       <Button>FUCSS POWER</Button>
     </div>
   )
-}
+})
 
 
 // p:10px fs:230pc

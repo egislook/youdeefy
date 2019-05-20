@@ -4,7 +4,7 @@ import { GET } from 'fetchier'
 export default {
   getSiteData: async ({ dev }) => ({
     icon: '/icons/512.png',
-    name: 'YouDeesfy',
+    name: 'YouDeefy',
     title: ['What are',  'you looking for?'],
     description: 'Find your favourite artists, songs, channels or inspiring playlists. Just start typing!',
     suggestions: 'Just click on one of the suggested playlists and Enjoy the Music!',

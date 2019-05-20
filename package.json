@@ -19,7 +19,8 @@
     "react-static-plugin-reach-router": "^7.0.0",
     "react-static-plugin-source-filesystem": "^7.0.0",
     "react-static-plugin-styled-components": "^7.0.10",
-    "styled-components": "^4.2.0"
+    "styled-components": "^4.2.0",
+    "youdeefy": "file:./src/@youdeefy"
   },
   "devDependencies": {
     "babel-eslint": "9.x",

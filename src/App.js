@@ -1,42 +1,42 @@
-import React, { Fragment, Suspense, useEffect } from 'react'
-import { Root, Routes, addPrefetchExcludes, Head } from 'react-static'
+import React, { Fragment, Suspense, useEffect, useContext } from 'react'
+import { Root, Routes, addPrefetchExcludes, Head, Body } from 'react-static'
 //
 import { Link, Router } from '@reach/router'
 import Playlist from 'pages/playlist'
+import Elements from 'youdeefy/elements'
+import Components from 'youdeefy/components'
+import { GlobalProvider } from 'youdeefy/contexts'
 
 import './style.css'
 
 // Any routes that start with 'dynamic' will be treated as non-static routes
 addPrefetchExcludes(['dynamic'])
 
-export default () => {
+export default (props) => {
   
   useServiceWorker();
   
   return (
     <Fragment>
-      <Meta />
+      <Header />
       <Root>
-        {false && <nav>
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/blog">Blog</Link>
-          <Link to="/dynamic">Dynamic</Link>
-        </nav>}
-        <div className="content">
-          <Suspense fallback={<em>Loading...</em>}>
-            <Router>
-              <Playlist path="playlist/:playlistId" />
-              <Routes path="*" />
-            </Router>
+        <GlobalProvider>
+          <Suspense fallback={<Elements.Fog />}>
+            <Components.Layout>
+              <Components.Player />
+              <Router>
+                <Playlist path="playlist/:playlistId" />
+                <Routes path="*" />
+              </Router>
+            </Components.Layout>
           </Suspense>
-        </div>
+        </GlobalProvider>
       </Root>
     </Fragment>
   )
 }
 
-const Meta = () => (
+const Header = () => (
   <Head>
     <meta name="theme-color" content="#26292D" />
     <meta name="title" content="YouDeefy" />

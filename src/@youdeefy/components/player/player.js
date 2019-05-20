@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import GlobalContext from 'youdeefy/contexts'
 import { fucss } from 'next-fucss/utils'
+import { usePlayer } from './hooks'
 
-export default ({ track = {}, elem, src, handleTogglePlay, handleChangeTrack, isPlaying, duration, currentTime, handleChangeTime }) => {
+export default (props) => {
+  
+  const global = useContext(GlobalContext);
+  
+  const { track = {}, elem, src, handleTogglePlay, handleChangeTrack, isPlaying, trackInfo, handleChangeTime } = usePlayer(global);
+  
+  const { duration, currentTime } = trackInfo;
+  
+  if(!track.id)
+    return null;
   
   const percentage = (currentTime / duration) * 100;
   const durationMinsAndSecs = getMinsAndSecs(duration);
@@ -13,9 +24,12 @@ export default ({ track = {}, elem, src, handleTogglePlay, handleChangeTrack, is
         <div className="bg:sec bs:2 of:hd dp:flx bs:2 w:100pc">
           <div className="m-rl:0">
             <div onClick={handleTogglePlay} className="h,w,mnw,lh:60px bg-sz:cv bg-ps:c" style={{backgroundImage: `url(${track.img})`}}>
-              {!isPlaying 
-                ? <i className="fu-triangle-right lh:1 fs:150pc" /> 
-                : <a className="fs:70pc fw:700 bg:blacka5 w,h:100pc t:0 m-t:3npx">{currentMinsAndSecs.minutes}:{currentMinsAndSecs.seconds}</a> }
+              <a className="fs:70pc fw:700 bg:blacka5 w,h:100pc t:0 m-t:3npx">
+                { !isPlaying 
+                    ? <i className="fu-triangle-right lh:1 fs:150pc" />
+                    : <span>{currentMinsAndSecs.minutes}:{currentMinsAndSecs.seconds}</span>
+                }
+              </a>
             </div>
           </div>
           <div className="w:100pc dp:flx flxd:col jc:sb">
@@ -47,8 +61,8 @@ function onChangeTime(e, action, duration){
 }
 
 function getMinsAndSecs(duration){
-  const minutes = parseInt(duration / 60);
-  const seconds = parseInt(duration - (minutes * 60));
+  const minutes = parseInt(duration / 60) || 0;
+  const seconds = parseInt(duration - (minutes * 60)) || 0;
   return { 
     minutes: minutes < 10 ? '0' + minutes : minutes, 
     seconds: seconds < 10 ? '0' + seconds : seconds 
