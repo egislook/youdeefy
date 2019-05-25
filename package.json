@@ -7,7 +7,8 @@
     "stage": "react-static build --staging",
     "build": "react-static build",
     "analyze": "react-static build --analyze",
-    "serve": "serve dist -p 8080"
+    "serve": "serve dist -p 8080",
+    "copy": "cp -R /root/youdeefy/dist /var/www/youdeefy"
   },
   "dependencies": {
     "@reach/router": "^1.2.1",

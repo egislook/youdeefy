@@ -11,15 +11,16 @@ input, button, select, option, textarea{font-size: 100%; font-family: inherit;}
 [contenteditable]{cursor: text}
 [contenteditable]:empty:before{content: attr(placeholder); opacity: 0.5; display: block;}
 /** Fucss class rules */ 
+.p-tb\:30px{padding-top:30px;padding-bottom:30px;}
+.mxw\:700px{max-width:700px;}
+.w\:100pc{width:100%;}
 .p-t\:30px{padding-top:30px;}
 .ps\:fx{position:fixed;}
 .l\,t\:0{left:0;top:0;}
-.w\:100pc{width:100%;}
 .dp\:flx{display:flex;}
 .bg\:sec{background:#2F3B50;}
 .ai\:c{align-items:center;}
 .jc\:sb{justify-content:space-between;}
-.mxw\:700px{max-width:700px;}
 .p-rl\:10px{padding-right:10px;padding-left:10px;}
 .br\:0-0-3px-3px{border-radius:0 0 3px 3px;}
 .bs\:1{box-shadow:0px 1px 2px rgba(0,0,0,0.10);}
@@ -32,7 +33,6 @@ input, button, select, option, textarea{font-size: 100%; font-family: inherit;}
 .ta\:r{text-align:right;}
 .lh\:1{line-height:1;}
 .fw\:100{font-weight:100;}
-.p-tb\:30px{padding-top:30px;padding-bottom:30px;}
 .h\:25px{height:25px;}
 .m-t\:2px{margin-top:2px;}
 .m-l\:10px{margin-left:10px;}

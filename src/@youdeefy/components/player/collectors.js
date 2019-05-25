@@ -8,13 +8,11 @@ export function fetchTrack(body) {
   console.log({ body });
   return window.fetch(API_URL + '/api/url', { body: JSON.stringify(body), method: 'POST', headers: { 'content-type': 'application/json' } })
     .then(res => res.json())
-    .then(console.log)
-    // .then(res => res.json())
-    // .then(json => {
-    //   console.log(json);
-    //   const format = json && json.data && json.data.formats && json.data.formats.find( f => f.itag === '140') || {};
-    //   return format.url;
-    // })
+    .then(json => {
+      console.log(json);
+      const format = json && json.data && json.data.formats && json.data.formats.find( f => f.itag === '140') || {};
+      return format.url;
+    })
     .catch(console.warn)
   // return POST({ url: API_URL + '/api/url', body })
   //   // .then(res => res.data)
