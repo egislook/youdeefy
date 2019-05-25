@@ -1,6 +1,6 @@
 {
   "name": "YouDeefy",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An awesome youtube playlist collector",
   "scripts": {
     "start": "react-static start",
