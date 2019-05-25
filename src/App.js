@@ -2,7 +2,7 @@ import React, { Fragment, Suspense, useEffect, useContext } from 'react'
 import { Root, Routes, addPrefetchExcludes, Head, Body } from 'react-static'
 //
 import { Link, Router } from '@reach/router'
-import Playlist from 'pages/playlist'
+import Playlist from 'screens/playlist'
 import Elements from 'youdeefy/elements'
 import Components from 'youdeefy/components'
 import { GlobalProvider } from 'youdeefy/contexts'

@@ -18,12 +18,14 @@ export default (props) => {
   const durationMinsAndSecs = getMinsAndSecs(duration);
   const currentMinsAndSecs = getMinsAndSecs(currentTime);
   
+  //style={{backgroundImage: `url(${track.img})`}}
+  
   return (
     <div className="ps:fx b,l:0 w:100pc dp:flx">
       <div className="w:100pc mxw:700px">
         <div className="bg:sec bs:2 of:hd dp:flx bs:2 w:100pc">
           <div className="m-rl:0">
-            <div onClick={handleTogglePlay} className="h,w,mnw,lh:60px bg-sz:cv bg-ps:c" style={{backgroundImage: `url(${track.img})`}}>
+            <div onClick={handleTogglePlay} className="bg-sz:cv bg-ps:c lh:60px h:60px w:60px">
               <a className="fs:70pc fw:700 bg:blacka5 w,h:100pc t:0 m-t:3npx">
                 { !isPlaying 
                     ? <i className="fu-triangle-right lh:1 fs:150pc" />
