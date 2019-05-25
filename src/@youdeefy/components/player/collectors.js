@@ -5,11 +5,22 @@ const API_URL = true ? 'https://youdeespot.com' : 'https://pwa-noneede.c9users.i
 
 export function fetchTrack(body) {
   
-  return POST({ url: API_URL + '/api/url', body })
-    // .then(res => res.data)
-    .then(res => {
-      console.log(res);
-      const format = res && res.data && res.data.formats && res.data.formats.find( f => f.itag === '140') || {};
-      return format.url;
-    });
+  console.log({ body });
+  return window.fetch(API_URL + '/api/url', { body: JSON.stringify(body), method: 'POST', headers: { 'content-type': 'application/json' } })
+    .then(res => res.json())
+    .then(console.log)
+    // .then(res => res.json())
+    // .then(json => {
+    //   console.log(json);
+    //   const format = json && json.data && json.data.formats && json.data.formats.find( f => f.itag === '140') || {};
+    //   return format.url;
+    // })
+    .catch(console.warn)
+  // return POST({ url: API_URL + '/api/url', body })
+  //   // .then(res => res.data)
+  //   .then(res => {
+  //     console.log(res);
+  //     const format = res && res.data && res.data.formats && res.data.formats.find( f => f.itag === '140') || {};
+  //     return format.url;
+  //   });
 }
