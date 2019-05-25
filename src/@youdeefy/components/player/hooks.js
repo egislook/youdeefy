@@ -1,5 +1,5 @@
 
-import { fetchPlaylist, fetchTrack } from './collectors';
+import { fetchTrack } from './collectors';
 import { useEffect, useState, useRef } from 'react';
 
 export const usePlayer = (global) => {
@@ -43,7 +43,7 @@ export const usePlayer = (global) => {
   }, [track])
   
   useEffect(() => {
-    addGlobalHandler({ handleTrack: handleTrack.bind(global) });
+    addGlobalHandler({ handleTrack });
   }, [global.store]);
   
   return { track, handleTrack, src, handleTogglePlay, isPlaying, elem, trackInfo, handleChangeTime, handleChangeTrack }

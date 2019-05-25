@@ -23,7 +23,7 @@ export default (props) => {
       <Playlist 
         playlist={playlist} 
         selectedTrack={global.store.track}
-        onSelectTrack={global.getGlobalHandler('handleTrack')} />
+        onSelectTrack={global.getGlobalHandler && global.getGlobalHandler('handleTrack') || console.log} />
       
     </div>
   )
