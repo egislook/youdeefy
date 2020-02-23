@@ -11,7 +11,7 @@ export default (props) => {
   
   return (
     <div className="p-rl:3pc">
-      <h1 className="fs:160pc m-t:5px lh:1.1 mxw:200px">{title && title.map(text => (
+      <h1 style={{ margin: 'auto' }} className="fs:160pc m-t:5px lh:1.1 mxw:200px">{title && title.map(text => (
         <div key={text}>{text}</div>
       ))}</h1>
       <h2 className="fs:95pc m-tb:20px c:56585C">{description}</h2>
@@ -29,7 +29,7 @@ export default (props) => {
       
       <Elements.Logo image={icon} name={name} />
       
-      <h2 className="fs:85pc m-b:10px m-t:10px c:56585C mxw:250px">{suggestions}</h2>
+      <h2 style={{ margin: 'auto', marginTop: '10px', marginBottom: '10px' }} className="fs:85pc m-b:10px m-t:10px c:56585C mxw:250px">{suggestions}</h2>
     </div>
   )
 }

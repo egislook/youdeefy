@@ -22,7 +22,7 @@ const ElemPlaylistPreview = ({ img, title, channelTitle, playlistId }) => (
     <span className="ps:rl w:200px of:hd bg:26292D bs:2 br:5px m-b:20px hv-scl:1.05_bg:black ts:all hv-try:0_h4">
       <img className="w:100pc dp:bk" src={img} />
       <h4 className="p:10px ps:ab w,h:100pc bg:blacka7 dp:flx ai:c t,l:0 md-try:100pc ts:all">
-        <span>
+        <span style={{ margin: 'auto' }}>
           {title}<br /><small className="fs:80pc fw:300">{channelTitle}</small>
         </span>
       </h4>

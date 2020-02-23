@@ -15,7 +15,7 @@ export default (props) => {
   return (!!playlist && 
     <div className="p-t:30px">
       <header className="ps:fx l,t:0 w:100pc">
-        <div className="dp:flx bg:sec ai:c jc:sb w:100pc mxw:700px p-rl:10px br:0-0-3px-3px bs:1">
+        <div style={{ margin: 'auto' }} className="dp:flx bg:sec ai:c jc:sb w:100pc mxw:700px p-rl:10px br:0-0-3px-3px bs:1">
           <Link className="fu-arrow-left p-tb:10px crs:pt p:10px" to="/" />
           <h3 className="p:10px fs:85pc c:grey200 bg:ts ta:r lh:1"><strong>{playlist.title}</strong><br/><small className="fw:100">{playlist.channelTitle}</small></h3>
         </div>

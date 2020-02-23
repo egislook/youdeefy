@@ -20,7 +20,7 @@ export default (props) => {
   
   return (
     <div className="ps:fx b,l:0 w:100pc dp:flx">
-      <div className="w:100pc mxw:700px">
+      <div className="w:100pc mxw:700px" style={{ margin: 'auto' }}>
         <div className="bg:sec bs:2 of:hd dp:flx bs:2 w:100pc">
           <div className="m-rl:0">
             <div onClick={handleTogglePlay} className="bg-sz:cv bg-ps:c lh:60px h:60px w:60px" style={{backgroundImage: `url(${track.img})`}}>
@@ -34,7 +34,7 @@ export default (props) => {
           </div>
           <div className="w:100pc dp:flx flxd:col jc:sb">
             <div className="dp:flx w:100pc h:100pc ai:c">
-              <div className="fs:70pc ta:l m-l:10px">
+              <div className="fs:70pc ta:l m-l:10px w:100pc">
                 <h3>{track.name}</h3>
                 <p className="m-t:3px">{track.artist}</p>
               </div>
