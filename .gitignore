@@ -3,3 +3,4 @@ package-lock.json
 /dist
 /tmp
 /artifacts
+/bin/serverless/node_modules

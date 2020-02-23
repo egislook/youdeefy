@@ -10,7 +10,8 @@ export function fetchTrack(body) {
     .then(res => res.json())
     .then(json => {
       console.log(json);
-      const format = json && json.data && json.data.formats && json.data.formats.find( f => f.itag === '140') || {};
+      const format = json && json.data && json.data.formats && json.data.formats.find( f => f.itag === 140) || {};
+      console.log({ format })
       return format.url;
     })
     .catch(console.warn)
