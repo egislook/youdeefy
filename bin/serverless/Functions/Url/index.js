@@ -4,11 +4,15 @@ const queries = require('../queries');
 const ytdl = require('ytdl-core');
 
 module.exports.handler = async event => {
+
+  let body = event.pathParameters
+
+  if(event.body && !body)
+    body = JSON.parse(event.body) || { videoId: 'KeBR6h2UsLI' }
+
+  if(!body.videoId)
+    return fail({ error: 'missing videoId parameter' })
   
-  const body = event.body && JSON.parse(event.body) || { videoId: 'KeBR6h2UsLI' };
-  
-  if(!body || !body.videoId)
-    return fail({ error: 'body is missing videoId'})
   
   return getVideoInfo(body)
     .then(success)
@@ -24,22 +28,21 @@ module.exports.handler = async event => {
 async function getVideoInfo(track){
   let { videoId, altVideoId, title } = track;
   
-  if(!altVideoId && title){
-    altVideoId = await getVideoAlts(title).then(({ items: [item] }) => item.id && item.id.videoId);
-    storeTrackAlt({ ...track, altVideoId });
-  }
+  // if(!altVideoId && title){
+  //   storeTrackAlt(track)
+    // altVideoId = await getVideoAlts(title).then(({ items: [item] }) => item.id && item.id.videoId);
+    // storeTrackAlt({ ...track, altVideoId });
+  // }
   
   return new Promise((resolve, reject) => 
-    ytdl.getInfo('https://www.youtube.com/watch?v=' + (altVideoId || videoId), (err, info) => {
-      if(err)
-        return reject(err);
-        
+    ytdl.getInfo('https://www.youtube.com/watch?v=' + videoId, (err, info) => {
+      if(err) return reject(err)
       resolve(info)
     })
   )
 }
 
-function storeTrackAlt(values){
+function storeTrack(values){
   const query = queries.upsert('track', { columns: Object.keys(values), key: 'videoId' });
   const variables = { values };
   return GQL({ url: HASURA_ENDPOINT, query, variables })

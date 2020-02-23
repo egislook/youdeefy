@@ -21,6 +21,10 @@ functions:
       - http:
           path: api/url
           method: post
+      - http:
+          path: api/url/{videoId?}
+          method: get
+      
 
 plugins:
   - serverless-offline
